@@ -34,9 +34,9 @@ final class KeyboardLayout {
         if shift { modifiers |= 2 }   // shiftKey >> 8
         if caps { modifiers |= 4 }    // alphaLock >> 8
         var deadKeyState: UInt32 = 0
-        var length: UniCharCount = 0
+        var length: Int = 0
         var chars = [UniChar](repeating: 0, count: 8)
-        let maxLength = UniCharCount(chars.count)
+        let maxLength = chars.count
         let kbdType = UInt32(LMGetKbdType())
         let status: OSStatus = layoutData.withUnsafeBytes { raw -> OSStatus in
             guard let base = raw.baseAddress else { return -1 }
